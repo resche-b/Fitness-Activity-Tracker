@@ -1,3 +1,19 @@
 
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.main-element {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+}
+
+.dashboard {
+  padding-left: 1vw;
+  padding-top: 1vw;
+  flex:1;
+}
 
 

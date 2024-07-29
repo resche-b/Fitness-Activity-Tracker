@@ -5,7 +5,6 @@
     color: black;
     width: 12.5%;
     height: 92vh;
-    position: fixed;
     top: 4vh;
     left: 4vh;
     overflow-y: auto;
@@ -16,10 +15,11 @@
     font-family: 'Roboto', sans-serif;
     font-size: 2vh;
     border: 1px solid white;
+    margin-left: 2.5vw;
 
 }
 
-ul {
+.list {
     margin-top: 15vh;
     list-style-type: none;
     line-height: 3;
@@ -28,7 +28,7 @@ ul {
     padding: 1vh;
 }
 
-li {
+.list-item {
     border: 1px solid #363434;
     border-radius: 1vh;
     margin: 1vh;
@@ -36,14 +36,14 @@ li {
     user-select: none;
 }
 
-li:hover {
+.list-item:hover {
     background-color: #f0f0f0;
     color: #007bff;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
 
-li:active {
+.list-item:active {
     background-color: #e0e0e0b0;
     transform: scale(0.98);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);

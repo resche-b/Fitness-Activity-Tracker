@@ -1,0 +1,53 @@
+.trackers {
+  padding: 0%;
+  display: flex;
+  flex-direction: row; /* Align elements in a row */
+  justify-content: space-around; /* Optional: add space between elements */
+  width: 85%;
+  height: 25%;
+  border-radius: 5vh;
+  
+}
+
+.specific-tracker-main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10%;
+  }
+
+.specific-tracker {
+  align-items: center;
+  width: 16vw;
+  height: 22vh;
+  border-radius: 10%;
+  background-color:rgb(62, 62, 124);
+}
+
+.calories-tracker {
+    margin: 0;
+    padding: 0;
+    width:16vw;
+    height: 22vh;
+    background-color: rgb(62, 62, 124);
+    align-items: center;
+    border-radius: 10%;
+}
+.date-range {
+  list-style-type: none;
+  padding-top: 1.5vh;
+  padding-left: 1vw;
+  margin: 0;
+}
+
+/* .date-range2 {
+    list-style-type: none;
+    padding-left: 2vw;
+    margin-bottom: 2vh;
+    margin: 0;
+} */
+
+.date-range-items {
+    display: inline-block;
+      margin-right: 20px; /* Add space between items */
+}

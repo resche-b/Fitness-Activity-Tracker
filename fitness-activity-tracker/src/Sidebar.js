@@ -5,11 +5,11 @@ import './Sidebar.css';
 const Sidebar = () => {
   return (
     <div className='sidebar'>
-      <ul>
-        <li>Dashboard</li>
-        <li>Goals</li>
-        <li>Calander</li>
-        <li>Contact</li>
+      <ul className='list'>
+        <li className='list-item'>Dashboard</li>
+        <li className='list-item'>Goals</li>
+        <li className='list-item'>Calander</li>
+        <li className='list-item'>Contact</li>
       </ul>
     </div>
   )
