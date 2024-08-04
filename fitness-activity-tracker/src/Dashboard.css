@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: row; /* Align elements in a row */
   justify-content: space-around; /* Optional: add space between elements */
-  width: 85%;
+  width: 100%;
   height: 25%;
   border-radius: 5vh;
   
@@ -33,21 +33,26 @@
     align-items: center;
     border-radius: 10%;
 }
-.date-range {
-  list-style-type: none;
-  padding-top: 1.5vh;
-  padding-left: 1vw;
-  margin: 0;
+
+.secondary-row {
+  display: flex;
+  flex-direction: row;  
 }
 
-/* .date-range2 {
-    list-style-type: none;
-    padding-left: 2vw;
-    margin-bottom: 2vh;
-    margin: 0;
-} */
+.step-tracker-main {
+  background-color: rgb(62, 62, 124);
+  border-radius: 2vh;
+  width: 30%;
+  padding: 1%;
+  margin-left: 6vw;
+  margin-top: 4vh;
+}
 
-.date-range-items {
-    display: inline-block;
-      margin-right: 20px; /* Add space between items */
+.weight-tracker-main {
+  background-color: rgb(62, 62, 124);
+  border-radius: 2vh;
+  width: 25%;
+  padding: 1%;
+  margin-left: 2vw;
+  margin-top: 4vh;
 }
