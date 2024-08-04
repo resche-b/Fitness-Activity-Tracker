@@ -36,23 +36,24 @@
 
 .secondary-row {
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;
+  justify-content:space-around; /* Optional: add space between elements */  
+  width: 72%;
+  height: 34vh;
 }
 
 .step-tracker-main {
+  border-radius: 2%;
   background-color: rgb(62, 62, 124);
-  border-radius: 2vh;
-  width: 30%;
   padding: 1%;
-  margin-left: 6vw;
   margin-top: 4vh;
+  width: 29vw;
 }
 
 .weight-tracker-main {
+  border-radius: 2%;
   background-color: rgb(62, 62, 124);
-  border-radius: 2vh;
-  width: 25%;
   padding: 1%;
-  margin-left: 2vw;
+  width: 29vw;
   margin-top: 4vh;
 }
