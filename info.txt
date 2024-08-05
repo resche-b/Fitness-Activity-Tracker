@@ -1,5 +1,13 @@
+Features:
 Expense caragory tracker
 Expense vs income vs investments
 Reminders
 To do list
 Daily reflection on a different page
+
+AWS-Infastructure:
+Multiple tables for each tracker
+Lambda to pull push and query data
+API gateway for apis - look into what type of api to use
+Congito to allow authentication
+

@@ -1,0 +1,16 @@
+.todo-list {
+    margin-top: 15vh;
+    list-style-type: none;
+    line-height: 3;
+    width: 100%;
+    text-align: center;
+    padding: 1vh;
+}
+
+.todo-list-items {
+    border: 1px solid #363434;
+    border-radius: 1vh;
+    margin: 1vh;
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
+    user-select: none;
+}
