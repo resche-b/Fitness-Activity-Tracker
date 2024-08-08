@@ -4,16 +4,21 @@ import "./ToDoList.css"
 
 const ToDoList = () => {
   const [items, setItems] = useState([
-    "Dashboard",
-    "Goals",
-    "Calander",
-    "Contact",
+    "Finish my work",
+    "Go on a run",
+    "Create scheule",
+    "Choose courses making it longer to test",
   ]);
 
   return (
     <ul className="todo-list">
       {items.map((item, index) => (
-        <li className="todo-list-items" key={index}>{item}</li>
+        <li className="todo-list-items" key={index}>
+          <label>
+            <input type="checkbox" className="todo-checkbox" />
+            {item}
+          </label>
+        </li>
       ))}
     </ul>
   );

@@ -13,4 +13,14 @@
     margin: 1vh;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif; /* Change to your desired font */
+    font-size: 18px; /* Change to your desired font size */
+    color: #FFFFFF; /* Change to your desired font color */
+}
+
+.todo-checkbox {
+    margin-right: 1vw;
 }
