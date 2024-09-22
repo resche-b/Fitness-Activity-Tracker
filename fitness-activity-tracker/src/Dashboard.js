@@ -6,6 +6,7 @@ import StepTracker from "./StepTracker";
 import "./Dashboard.css";
 import WeightTracker from "./WeightTracker";
 import ToDoList from "./ToDoList";
+import Checklist from "./Checklist";
 
 const Dashboard = () => {
   return (
@@ -40,7 +41,9 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="third-row">third row</div>
+      <div className="third-row">
+        <Checklist/>
+      </div>
     </div>
   );
 };

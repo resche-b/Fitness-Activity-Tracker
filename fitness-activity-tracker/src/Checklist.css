@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+}
+.habit-tracker-container {
+    padding: 20px;
+}
+
+.habit-tracker-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.habit-tracker-table th, .habit-tracker-table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: center;
+}
+
+.habit-tracker-table th {
+    /* background-color: #f2f2f2; */
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}

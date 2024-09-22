@@ -60,11 +60,12 @@
 }
 
 .third-row {
+  padding-top: 1vh;
   background-color: cadetblue;
   display: flex;
   flex-direction: row;
   justify-content:space-around; /* Optional: add space between elements */  
-  width: 72%;
+  width: 74.5%;
   height: 34vh;
 
 }
