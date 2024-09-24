@@ -35,12 +35,7 @@ const Dashboard = () => {
         <div className="weight-tracker-main">
           <WeightTracker />
         </div>
-        <div className="to-do-list">
-          <h1 className="to-do-list-title">Title</h1>
-          <ToDoList/>
-        </div>
       </div>
-
       <div className="third-row">
         <Checklist/>
       </div>

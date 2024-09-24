@@ -1,6 +1,8 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
 export class TrackerDatabaseStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -41,25 +43,24 @@ export class TrackerDatabaseStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY, 
     });
 
-    const todoTable = new dynamodb.Table(this, 'TodoLogsTable', {
-      partitionKey: { name: 'UserID', type: dynamodb.AttributeType.STRING },
-      sortKey: { name: 'TaskID', type: dynamodb.AttributeType.STRING },
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      removalPolicy: cdk.RemovalPolicy.DESTROY, 
+
+    // Define Lambda function for sleep logs (Example for sleepLogs)
+    const sleepLogsLambda = new lambda.Function(this, 'SleepLogsHandler', {
+      runtime: lambda.Runtime.NODEJS_16_X,
+      handler: 'lambda-sleep-logs.handler',  // Pointing to the correct file and handler function
+      code: lambda.Code.fromAsset('Lambda'), // Folder where your Lambda code is located
+      environment: {
+        SLEEP_LOGS_TABLE_NAME: sleepLogsTable.tableName,  // Pass table name as an environment variable
+      },
     });
 
-    const monetaryLogsTable = new dynamodb.Table(this, 'MonetaryLogsTable', {
-      partitionKey: { name: 'UserID', type: dynamodb.AttributeType.STRING },
-      sortKey: { name: 'TransactionID', type: dynamodb.AttributeType.STRING },
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      removalPolicy: cdk.RemovalPolicy.DESTROY, 
+    sleepLogsTable.grantReadWriteData(sleepLogsLambda);
+
+    const api = new apigateway.RestApi(this, 'TrackerApi', {
+      restApiName: 'Habit-Tracker-API',
     });
 
-    const goalsTable = new dynamodb.Table(this, 'GoalsTable', {
-      partitionKey: { name: 'UserID', type: dynamodb.AttributeType.STRING },
-      sortKey: { name: 'GoalID', type: dynamodb.AttributeType.STRING },
-      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-      removalPolicy: cdk.RemovalPolicy.DESTROY, 
-    });
+
+
   }
 }

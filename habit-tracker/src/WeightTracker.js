@@ -2,11 +2,10 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { useState } from "react";
 
-const SleepTracker = () => {
+const WeightTracker = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const [sleep, setSleep] = useState(5);
-  const [sleepGoal, setSleepGoal] = useState(8);
+  const [weight, setWeight] = useState(5);
 
   useEffect(() => {
     if (chartInstance.current) {
@@ -15,29 +14,29 @@ const SleepTracker = () => {
 
     const myChartRef = chartRef.current.getContext("2d");
     chartInstance.current = new Chart(myChartRef, {
-      type: "doughnut",
+      type: "line",
       data: {
-        labels: ["Consumed", "Remaining"],
+        labels: ['test1','test2'],
         datasets: [
           {
-            data: [sleep, sleepGoal - sleep],
-            backgroundColor: ["#ffd700", "#adacac"],
-            borderWidth: 2,
-            borderColor: [
-              '#ffd700',
-              '#adacac',
-            ],
+            label: "My First Dataset",
+            data: [65, 59, 80, 81, 56, 55, 40],
+            fill: false,
+            borderColor: "rgb(75, 192, 192)",
+            tension: 0.1,
           },
         ],
       },
       options: {
-        cutout: "80%",
         plugins: {
           legend: {
             position: "top",
+            labels: {
+              color: "#C5C6C7"
+            }
           },
         },
-      },
+      }
     });
 
     return () => {
@@ -49,9 +48,9 @@ const SleepTracker = () => {
 
   return (
     <div>
-      <canvas ref={chartRef} style={{ maxWidth: '21vw', maxHeight: '21vh' }} />
+      <canvas ref={chartRef} />
     </div>
   );
 };
 
-export default SleepTracker;
+export default WeightTracker;

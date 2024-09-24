@@ -15,7 +15,7 @@ const ToDoList = () => {
       {items.map((item, index) => (
         <li className="todo-list-items" key={index}>
           <label>
-            <input type="checkbox" className="todo-checkbox" />
+            {/* <input type="checkbox" className="todo-checkbox" /> */}
             {item}
           </label>
         </li>

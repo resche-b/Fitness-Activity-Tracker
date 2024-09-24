@@ -9,19 +9,25 @@ body {
 .habit-tracker-table {
     width: 100%;
     border-collapse: collapse;
+    background-color: #1F2833;
+    border: 2px solid #C5C6C7; /* Added border color */
+    color: #45A29E;
 }
 
 .habit-tracker-table th, .habit-tracker-table td {
     border: 1px solid #000000;
     padding: 8px;
     text-align: center;
+    border-right: none;
+    border-left: none;
 }
 
 .habit-tracker-table th {
-    /* background-color: #f2f2f2; */
+    /* background-color: #bfc0c0; */
 }
 
 input[type="checkbox"] {
     width: 20px;
     height: 20px;
+    accent-color: #45A29E; /* Change this to your desired checkbox color */
 }

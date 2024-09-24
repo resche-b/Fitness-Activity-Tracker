@@ -35,6 +35,9 @@ const WaterTracker = () => {
         plugins: {
           legend: {
             position: "top",
+            labels: {
+              color: "#C5C6C7"
+            }
           },
         },
       },

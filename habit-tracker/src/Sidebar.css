@@ -1,26 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 .sidebar {
-    background-color: rgb(62, 62, 124);
-    color: black;
+    background-color: #1F2833;
+    color: #45A29E;
     width: 12.5%;
     height: 92vh;
     top: 4vh;
     left: 4vh;
     overflow-y: auto;
-    border-radius: 50px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-family: 'Roboto', sans-serif;
     font-size: 2vh;
-    border: 1px solid white;
+    border: 1px solid #C5C6C7;
     margin-left: 2.5vw;
 
 }
 
 .list {
-    margin-top: 15vh;
+    margin-top: 3vh;
     list-style-type: none;
     line-height: 3;
     width: 100%;
@@ -29,7 +29,7 @@
 }
 
 .list-item {
-    border: 1px solid #363434;
+    border: 1px solid #C5C6C7;
     border-radius: 1vh;
     margin: 1vh;
     transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;

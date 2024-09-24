@@ -2,12 +2,11 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { useState } from "react";
 
-const CaloriesTracker = () => {
+const SleepTracker = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const [carbIntake, setCarbIntake] = useState(5);
-  const [proteinIntake, setProteinIntakeGoal] = useState(8);
-  const [fatIntake, setFatIntakeGoal] = useState(8);
+  const [sleep, setSleep] = useState(5);
+  const [sleepGoal, setSleepGoal] = useState(8);
 
   useEffect(() => {
     if (chartInstance.current) {
@@ -18,13 +17,16 @@ const CaloriesTracker = () => {
     chartInstance.current = new Chart(myChartRef, {
       type: "doughnut",
       data: {
-        labels: ["Protein", "Far","Carbs"],
+        labels: ["Consumed", "Remaining"],
         datasets: [
           {
-            data: [proteinIntake,fatIntake,carbIntake],
-            backgroundColor: ["rgb(244,48,100)", "rgb(87,44,249)","rgb(31,150,250)"],
+            data: [sleep, sleepGoal - sleep],
+            backgroundColor: ["#ffd700", "#adacac"],
             borderWidth: 2,
-            borderColor: ["rgb(244,48,100)", "rgb(87,44,249)","rgb(31,150,250)"],
+            borderColor: [
+              '#ffd700',
+              '#adacac',
+            ],
           },
         ],
       },
@@ -33,6 +35,9 @@ const CaloriesTracker = () => {
         plugins: {
           legend: {
             position: "top",
+            labels: {
+              color: "#C5C6C7"
+            }
           },
         },
       },
@@ -52,4 +57,4 @@ const CaloriesTracker = () => {
   );
 };
 
-export default CaloriesTracker;
+export default SleepTracker;

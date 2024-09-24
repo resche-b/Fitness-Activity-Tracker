@@ -2,10 +2,10 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js/auto";
 import { useState } from "react";
 
-const WeightTracker = () => {
+const StepTracker = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const [weight, setWeight] = useState(5);
+  const [steps, setSteps] = useState(5);
 
   useEffect(() => {
     if (chartInstance.current) {
@@ -27,6 +27,16 @@ const WeightTracker = () => {
           },
         ],
       },
+      options: {
+        plugins: {
+          legend: {
+            position: "top",
+            labels: {
+              color: "#C5C6C7"
+            }
+          },
+        },
+      }
     });
 
     return () => {
@@ -43,4 +53,4 @@ const WeightTracker = () => {
   );
 };
 
-export default WeightTracker;
+export default StepTracker;
