@@ -1,16 +1,38 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
-import { useState } from "react";
 
 const SleepTracker = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const [sleep, setSleep] = useState(5);
-  const [sleepGoal, setSleepGoal] = useState(8);
+  const [sleep, setSleep] = useState(0); // Initially 0, will be updated by API data
+  const [sleepGoal, setSleepGoal] = useState(8); // Default goal is 8 hours of sleep
 
+  // Replace with your actual API Gateway endpoint
+  const apiEndpoint = 'https://2hm2vipyg3.execute-api.us-east-1.amazonaws.com/prod/sleeplogs?UserID=12345';
+
+  // Fetch sleep data from the Lambda function via API Gateway
+  useEffect(() => {
+    const fetchSleepData = async () => {
+      try {
+        const response = await fetch(apiEndpoint, {
+          method: 'GET',
+        });
+        const data = await response.json();
+
+        // Assuming the API response contains 'totalSleep' (from Lambda)
+        setSleep(data.totalSleep || 0);
+      } catch (error) {
+        console.error('Error fetching sleep data:', error);
+      }
+    };
+
+    fetchSleepData();
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
+
+  // Recreate the chart every time the sleep value is updated
   useEffect(() => {
     if (chartInstance.current) {
-      chartInstance.current.destroy();
+      chartInstance.current.destroy(); // Destroy the previous chart instance if it exists
     }
 
     const myChartRef = chartRef.current.getContext("2d");
@@ -20,13 +42,10 @@ const SleepTracker = () => {
         labels: ["Consumed", "Remaining"],
         datasets: [
           {
-            data: [sleep, sleepGoal - sleep],
+            data: [sleep, Math.max(sleepGoal - sleep, 0)], // Ensure no negative values
             backgroundColor: ["#ffd700", "#adacac"],
             borderWidth: 2,
-            borderColor: [
-              '#ffd700',
-              '#adacac',
-            ],
+            borderColor: ['#ffd700', '#adacac'],
           },
         ],
       },
@@ -45,10 +64,10 @@ const SleepTracker = () => {
 
     return () => {
       if (chartInstance.current) {
-        chartInstance.current.destroy();
+        chartInstance.current.destroy(); // Clean up the chart instance on component unmount
       }
     };
-  }, []);
+  }, [sleep]); // Re-run this effect whenever the 'sleep' state is updated
 
   return (
     <div>

@@ -4,7 +4,8 @@ import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as apigateway from 'aws-cdk-lib/aws-apigateway';
 
-export class TrackerDatabaseStack extends cdk.Stack {
+
+export class HabitTrackerInfastructureStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
@@ -43,7 +44,6 @@ export class TrackerDatabaseStack extends cdk.Stack {
       removalPolicy: cdk.RemovalPolicy.DESTROY, 
     });
 
-
     // Define Lambda function for sleep logs (Example for sleepLogs)
     const sleepLogsLambda = new lambda.Function(this, 'SleepLogsHandler', {
       runtime: lambda.Runtime.NODEJS_16_X,
@@ -56,11 +56,16 @@ export class TrackerDatabaseStack extends cdk.Stack {
 
     sleepLogsTable.grantReadWriteData(sleepLogsLambda);
 
-    const api = new apigateway.RestApi(this, 'TrackerApi', {
+    const api = new apigateway.RestApi(this, 'Habit-Tracker-Api', {
       restApiName: 'Habit-Tracker-API',
     });
 
-
+    const sleepLogsResource = api.root.addResource('sleeplogs');
+    
+    sleepLogsResource.addMethod('GET', new apigateway.LambdaIntegration(sleepLogsLambda));
+    sleepLogsResource.addMethod('POST', new apigateway.LambdaIntegration(sleepLogsLambda));
+    sleepLogsResource.addMethod('PUT', new apigateway.LambdaIntegration(sleepLogsLambda));
+    sleepLogsResource.addMethod('DELETE', new apigateway.LambdaIntegration(sleepLogsLambda));
 
   }
 }
