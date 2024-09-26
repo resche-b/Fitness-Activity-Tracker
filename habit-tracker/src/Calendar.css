@@ -1,0 +1,19 @@
+.calendar-container {
+    margin: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .calendar-container h2 {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .react-calendar {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  

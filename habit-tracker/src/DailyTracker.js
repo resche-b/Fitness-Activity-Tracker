@@ -1,18 +1,18 @@
 import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js/auto";
 
-const SleepTracker = () => {
+const DailyTracker = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const [sleep, setSleep] = useState(0); // Initially 0, will be updated by API data
-  const [sleepGoal, setSleepGoal] = useState(8); // Default goal is 8 hours of sleep
+  const [progress, setProgress] = useState(0); // Initially 0, will be updated by API data
 
   // Replace with your actual API Gateway endpoint
   const apiEndpoint = 'https://2hm2vipyg3.execute-api.us-east-1.amazonaws.com/prod/sleeplogs?UserID=12345';
+  const percentageFilled = "65";
 
   // Fetch sleep data from the Lambda function via API Gateway
   useEffect(() => {
-    const fetchSleepData = async () => {
+    const fetchProgressData = async () => {
       try {
         const response = await fetch(apiEndpoint, {
           method: 'GET',
@@ -20,13 +20,13 @@ const SleepTracker = () => {
         const data = await response.json();
 
         // Assuming the API response contains 'totalSleep' (from Lambda)
-        setSleep(data.totalSleep || 0);
+        setProgress(data.totalSleep || 0);
       } catch (error) {
         console.error('Error fetching sleep data:', error);
       }
     };
 
-    fetchSleepData();
+    fetchProgressData();
   }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   // Recreate the chart every time the sleep value is updated
@@ -42,21 +42,21 @@ const SleepTracker = () => {
         labels: ["Consumed", "Remaining"],
         datasets: [
           {
-            data: [sleep, Math.max(sleepGoal - sleep, 0)], // Ensure no negative values
-            backgroundColor: ["#ffd700", "#adacac"],
+            data: [progress, Math.max(100 - progress, 0)], // Ensure no negative values
+            backgroundColor: ["aqua", "rgba(255, 69, 0, 0.6)"],
             borderWidth: 2,
-            borderColor: ['#ffd700', '#adacac'],
+            borderColor: ["aqua", "rgba(255, 69, 0, 0.6)"],
           },
         ],
       },
       options: {
         cutout: "80%",
         plugins: {
+          title: {
+            display: false,
+          },
           legend: {
-            position: "top",
-            labels: {
-              color: "#C5C6C7"
-            }
+            display: false, // Disable the legend
           },
         },
       },
@@ -67,13 +67,15 @@ const SleepTracker = () => {
         chartInstance.current.destroy(); // Clean up the chart instance on component unmount
       }
     };
-  }, [sleep]); // Re-run this effect whenever the 'sleep' state is updated
+  }, [progress]); // Re-run this effect whenever the 'sleep' state is updated
 
   return (
-    <div>
-      <canvas ref={chartRef} style={{ maxWidth: '21vw', maxHeight: '21vh' }} />
+    <div style={{ textAlign: 'center' }}>
+      <h3 style={{ color: '#C5C6C7', fontSize: '12px', paddingBottom: "1vh", paddingTop:"0.5vh", paddingRight: "0.5vw" }}>Today</h3>
+      <canvas ref={chartRef} style={{ maxWidth: '15vw', maxHeight: '15vh' }} />
+      <h3 style={{ color: '#C5C6C7', fontSize: '12px', paddingBottom: "1vh", paddingTop:"0.5vh" }}>{percentageFilled}%</h3>
     </div>
   );
 };
 
-export default SleepTracker;
+export default DailyTracker;

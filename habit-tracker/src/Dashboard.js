@@ -1,12 +1,13 @@
 import React from "react";
-import WaterTracker from "./WaterTracker";
-import SleepTracker from "./SleepTracker";
-import CaloriesTracker from "./CaloriesTracker";
+import DailyTracker from "./DailyTracker";
+import WeeklyTracker from "./WeeklyTracker";
+import PreviousWeeklyTracker from "./PreviousWeeklyTracker";
 import StepTracker from "./StepTracker";
 import "./Dashboard.css";
 import WeightTracker from "./WeightTracker";
 import ToDoList from "./ToDoList";
 import Checklist from "./Checklist";
+import Calendar from "./Calendar"
 
 const Dashboard = () => {
   return (
@@ -14,17 +15,17 @@ const Dashboard = () => {
       <div className="trackers">
         <div className="specific-tracker-main">
           <div className="specific-tracker">
-            <WaterTracker />
+            <DailyTracker/>
           </div>
         </div>
         <div className="specific-tracker-main">
           <div className="specific-tracker">
-            <SleepTracker />
+            <WeeklyTracker/>
           </div>
         </div>
-        <div className="calories-tracker-main">
-          <div className="calories-tracker">
-            <CaloriesTracker />
+        <div className="specific-tracker-main">
+          <div className="specific-tracker">
+            <PreviousWeeklyTracker/>
           </div>
         </div>
       </div>
